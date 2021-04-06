@@ -23,6 +23,8 @@
 
                 --编译
                     创建webpack的配置文件webapck.cofig.js并编译打包 或者 进行单个文件的编译打包
+                    
+                --想编译得文件需在入口js文件中进行引入，否则其想编译将不会被进行编译
 
             2.创建webapck.config.js(webpack的配置文件)
                 --指明webpack要干的事和操作
@@ -128,7 +130,47 @@
                     mode:'development'
                 4.验证
                     --在打包编译成功的文件中，会出现一个编译成功的html文件
-                
+
+            7.webpack打包img
+                --需要用到loader ---url-loader，file-loader
+                1.安装
+                    $cnpm i url-loader file-loader -D
+                    ----url-loader依赖file-loader实现
+
+                2.配置module中得loader
+                    //默认只能处理css、less中得图片资源
+
+                --处理css/less得图片资源
+                rules:[
+                    {
+                        test:/\.(png|jpg|jpeg|gif)$/,
+                        loader:'url-loader',
+                        options:{
+                            limit:8*1024   //说明图片得最小大小，小于8kb将会被进行base64处理
+                                            //优点：减少请求数量（减少服务器压力）
+                                            //缺点：图片体积变大，文件请求时长变长
+                        }
+                    }
+                ]
+
+                --处理html文件中得引入得图片资源路径
+                rules:[
+                    {
+                        test:/\.(png|jpg|jpeg|gif)$/,
+                        loader:'url-loader',
+                        options:{
+                            limit:8*1024 ,
+                            esModule:false  //关闭url-loader得ES6模块化，使用commonJS解析
+                                            //如果不关闭，则会因为url-loader默认使用ES6解析，同时html-loader引入图片是通过commonjs
+                                            引入，此时两者不统一将会在html引入图片资源路径中出现---[object  Module]  
+                        }
+                    },
+                    {
+                        test:/\.html$/, 
+                            //处理html文件中得img资源，从而被url-loader处理
+                        loader:'html-loader',
+                    }
+                ]
     */
     </script>
 </body>
