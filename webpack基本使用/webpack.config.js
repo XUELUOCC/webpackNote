@@ -1,0 +1,19 @@
+const  pathilb=require('path');
+module.exports={
+    entry:pathilb.resolve("./src/1.js"),
+    output:{
+        path:pathilb.resolve("dest/"),
+        filename:'bundle.js'
+    },
+    //loader的配置
+    module:{
+        rules:[
+            //详细的loader配置
+        ]
+    },
+    plugins:[
+        //plugins（插件）的配置
+    ],
+    //注明模式，生产环境/开发环境
+    mode:'development'
+}
