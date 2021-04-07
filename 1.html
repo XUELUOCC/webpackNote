@@ -169,6 +169,9 @@
                         test:/\.html$/, 
                             //处理html文件中得img资源，从而被url-loader处理
                         loader:'html-loader',
+                        options:{      //同样需要关闭ES6的模块化，使用commonjs解析
+                            esModule:false
+                        }
                     }
                 ]
     */
