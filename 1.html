@@ -179,6 +179,30 @@
                         }
                     }
                 ]
+            
+            8.webpack打包其他资源（图标，字体等）
+                ----其他资源----是除以css,js,html之外得资源
+                ----使用file-loader来进行打包
+                ----配置module中得rule
+                    module:{
+                        rules:[
+                            {
+                                exclude:/\.(css|js|html)$/,   //除去css，js，html之外得资源文件
+                                loader:'file-loader',
+                                options:{
+                                    name:'[hash:10].[ext]'
+                                }
+                            }
+                        ]
+                    }
+                ----例子：打包字体图标
+                    ---html文件中写入图标样式名，不需要手动引入字体图标，因为是需要打包入口文件，所以引入字体图标必须在入口文件中
+                    ---入口文件中按照阿里图标库中引入字体图标
+                    ---书写webpack。config.js得配置
+                    ---运行webpack命令
+                    ---
+
+                    
     */
     </script>
 </body>
