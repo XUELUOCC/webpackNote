@@ -149,6 +149,10 @@
                             limit:8*1024   //说明图片得最小大小，小于8kb将会被进行base64处理
                                             //优点：减少请求数量（减少服务器压力）
                                             //缺点：图片体积变大，文件请求时长变长
+                             esModule:false,
+                             name:'[hash:10].[ext]'  //不加此项，打包后的图片名称是一串大量的hash值
+                                                    //此项是设置打包的img的名称，取打包的hash值的前十位，同时[ext]是取原拓展名
+                                                    //可减少打包后的体积
                         }
                     }
                 ]
@@ -160,9 +164,10 @@
                         loader:'url-loader',
                         options:{
                             limit:8*1024 ,
-                            esModule:false  //关闭url-loader得ES6模块化，使用commonJS解析
+                            esModule:false，  //关闭url-loader得ES6模块化，使用commonJS解析
                                             //如果不关闭，则会因为url-loader默认使用ES6解析，同时html-loader引入图片是通过commonjs
                                             引入，此时两者不统一将会在html引入图片资源路径中出现---[object  Module]  
+                            name:'[hash:10].[ext]'
                         }
                     },
                     {

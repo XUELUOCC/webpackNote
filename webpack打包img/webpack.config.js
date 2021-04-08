@@ -22,7 +22,8 @@ module.exports={
                 loader:'url-loader',
                 options:{
                     limit:8*1024,
-                    esModule:false
+                    esModule:false,
+                    name:'[hash:10].[ext]'
                 }
             },
             {
