@@ -1,0 +1,23 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "20844362",
+      "name": "环动",
+      "font_class": "huandong",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
+      "icon_id": "20844363",
+      "name": "安保",
+      "font_class": "anbao",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    }
+  ]
+}

@@ -202,8 +202,48 @@
                     ---运行webpack命令
                     ---
 
+            9.webpack的devServer（开发服务器）
+                ---使用场景
+                    :不用devServer的话，每次修改源代码都需要进行打包一次，很麻烦，此devServer的作用————可自动打包自动编译，自动刷新浏览器
+                    ----即热更新设置，监视打包文件
+                ---配置webpack。config.js
+                    1.可通过options中的属性outputPath:'xxx（路径是build/xxx）' 设置打包编译后的文件存放位置
+                    2.设置devServer开发服务器实现热更新（自动打包编译文件，即监视文件修改，修改后自动立即更新）
                     
-    */
+                    module.exports={
+                        module:{
+                            rules:[
+                                 //处理css中的图片资源
+                                {
+                                    test:/\.(jpg|png|jpeg|gif)$/,
+                                    loader:'url-loader',
+                                    options:{
+                                        limit:8*1024,
+                                        name:'[hash:10].[ext]',
+                                        esModule:false,
+                                        outputPath:'imgs'  //设置编译后的文件路径
+                                    }
+                                },
+                            ]
+                        },
+                        mode:'development',
+                        devServer:{
+                            contentBase:pathlib.resolve('build/'),  //要运行的项目目录（打包之后的目录）
+                            compress:true,  //启动gzip的压缩
+                            port:3000,  //运行项目的端口号（取决于项目的端口号）
+                            open:true  //设置编译完成自动打开浏览器
+                        }
+                    }
+                ---特点：只会在内存中编译打包，不会有任何输出
+
+                ---启动指令的安装包，安装webpack-dev-server
+                    $cnpm i webpack-dev-server -g (全局安装)
+
+                ---启动指令：1. npx webpack serve（此指令只会在内存总进行编译，不会有任何输出，即不会出现打包文件）
+                            2.webpack serve (此指令将会严格按照流程，会出现输出，即出现打包文件)
+                
+                ---查看结果：localhost:3000(启动devServer的端口号)
+     */
     </script>
 </body>
 </html>

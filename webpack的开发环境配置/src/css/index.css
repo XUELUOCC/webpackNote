@@ -1,0 +1,9 @@
+#divs{
+    color:red;
+    font-size:30px;
+}
+.test{
+    width:200px;
+    height:200px;
+    background:url('../img/1.jpeg') no-repeat center center;
+}
