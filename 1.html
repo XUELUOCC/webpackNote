@@ -206,7 +206,7 @@
                 ---使用场景
                     :不用devServer的话，每次修改源代码都需要进行打包一次，很麻烦，此devServer的作用————可自动打包自动编译，自动刷新浏览器
                     ----即热更新设置，监视打包文件
-                ---配置webpack。config.js
+                ---配置webpack.config.js
                     1.可通过options中的属性outputPath:'xxx（路径是build/xxx）' 设置打包编译后的文件存放位置
                     2.设置devServer开发服务器实现热更新（自动打包编译文件，即监视文件修改，修改后自动立即更新）
                     
@@ -239,7 +239,7 @@
                 ---启动指令的安装包，安装webpack-dev-server
                     $cnpm i webpack-dev-server -g (全局安装)
 
-                ---启动指令：1. npx webpack serve（此指令只会在内存总进行编译，不会有任何输出，即不会出现打包文件）
+                ---启动指令：1. npx webpack serve（此指令只会在内存中进行编译，不会有任何输出，即不会出现打包文件）
                             2.webpack serve (此指令将会严格按照流程，会出现输出，即出现打包文件)
                 
                 ---查看结果：localhost:3000(启动devServer的端口号)
